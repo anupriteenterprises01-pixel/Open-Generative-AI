@@ -1043,3 +1043,25 @@ export async function expandImage(apiKey, { image_url, onRequestId }) {
     const payload = { image_url };
     return submitAndPoll(endpoint, payload, apiKey, onRequestId, 90);
 }
+
+
+/**
+ * Generate speech with MuAPI MiniMax Speech 2.6 Turbo.
+ * Returns the standard prediction result including a downloadable audio URL.
+ */
+export async function generateSpeech(apiKey, params = {}) {
+    const prompt = String(params.prompt || '').trim();
+    if (!apiKey) throw new Error('MuAPI API key is required.');
+    if (!prompt) throw new Error('Hindi text is required.');
+    if (prompt.length > 10000) throw new Error('Text must be 10,000 characters or fewer.');
+    const payload = {
+        prompt,
+        voice_id: params.voice_id || 'hindi_female_1_v2',
+        speed: Math.min(2, Math.max(0.5, Number(params.speed) || 1)),
+        volume: Math.min(10, Math.max(0.1, Number(params.volume) || 1)),
+        pitch: Math.min(12, Math.max(-12, Number(params.pitch) || 0)),
+        format: params.format || 'mp3',
+        language_boost: params.language_boost || 'Hindi',
+    };
+    return submitAndPoll('minimax-speech-2.6-turbo', payload, apiKey, params.onRequestId, 300);
+}
