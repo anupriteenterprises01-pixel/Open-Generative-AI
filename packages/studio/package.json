@@ -25,7 +25,8 @@
     "./McpCliStudio": "./src/components/McpCliStudio.jsx",
     "./AiInfluencerStudio": "./src/components/AiInfluencerStudio.jsx",
     "./LayersStudio": "./src/components/LayersStudio.jsx",
-    "./MotionControlStudio": "./src/components/MotionControlStudio.jsx"
+    "./MotionControlStudio": "./src/components/MotionControlStudio.jsx",
+    "./HindiVoiceStudio": "./src/components/HindiVoiceStudio.jsx"
   },
   "files": [
     "src",
