@@ -85,7 +85,7 @@ export default function HindiVoiceStudio() {
           <span className="block text-sm font-semibold">Voice</span>
           <select value={voiceName} onChange={(e) => setVoiceName(e.target.value)} className="w-full rounded-lg border border-zinc-700 bg-zinc-900 p-3">
             {voices.length === 0 && <option value="">Browser voice load ho rahi hai…</option>}
-            {voices.map((voice) => <option key={voice.name + voice.lang} value={voice.name}>{voice.name} ({voice.lang}){/^hi(-|_)?/i.test(voice.lang) ? " · Hindi" : ""}</option>)}
+            {voices.map((voice) => <option key={voice.name + voice.lang} value={voice.name}>{voice.name} ({voice.lang}) {/^hi(-|_)?/i.test(voice.lang) ? "· Hindi" : ""}</option>)}
           </select>
           <span className="text-xs text-zinc-500">{hindiVoices.length} Hindi voice(s) detected</span>
         </label>
