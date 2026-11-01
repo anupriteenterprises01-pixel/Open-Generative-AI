@@ -1061,6 +1061,7 @@ export async function generateSpeech(apiKey, params = {}) {
         volume: Math.min(10, Math.max(0.1, Number(params.volume) || 1)),
         pitch: Math.min(12, Math.max(-12, Number(params.pitch) || 0)),
         format: params.format || 'mp3',
+        emotion: params.emotion || 'neutral',
         language_boost: params.language_boost || 'Hindi',
     };
     return submitAndPoll('minimax-speech-2.6-turbo', payload, apiKey, params.onRequestId, 300);
